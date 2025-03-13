@@ -1,7 +1,8 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, const int grade):
-    name(name), grade(grade)
+    name(name),
+    grade(grade)
 {
     if (grade > 150) {
         throw GradeTooLowException();
@@ -12,7 +13,8 @@ Bureaucrat::Bureaucrat(const std::string& name, const int grade):
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy):
-    name(copy.name), grade(copy.grade)
+    name(copy.name),
+    grade(copy.grade)
 {
     if (grade > 150) {
         throw GradeTooLowException();

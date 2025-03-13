@@ -14,6 +14,8 @@ class   Bureaucrat {
         ~Bureaucrat();
         Bureaucrat( const Bureaucrat& copy );
         Bureaucrat& operator=( const Bureaucrat& copy );
+
+    public:
         std::string getName( void ) const;
         int         getGrade( void ) const;
         void        increaseGrade( void );
