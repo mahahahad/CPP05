@@ -77,11 +77,11 @@ void    Form::beSigned(const Bureaucrat& bc) {
     }
 }
 
-const char* Form::GradeTooLowException::what() {
+const char* Form::GradeTooLowException::what() const throw() {
     return (BOLD RED "ERROR: " RESET "The provided grade is too low\n");
 }
 
-const char* Form::GradeTooHighException::what() {
+const char* Form::GradeTooHighException::what() const throw() {
     return (BOLD RED "ERROR: " RESET "The provided grade is too high\n");
 }
 
