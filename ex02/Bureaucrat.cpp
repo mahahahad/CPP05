@@ -60,8 +60,12 @@ void    Bureaucrat::decreaseGrade(void) {
     }
 }
 
+void    Bureaucrat::signForm(AForm& form) {
+    form.beSigned(*this);
+}
+
 void    Bureaucrat::executeForm(const AForm& form) {
-    (void) form;
+    form.execute(*this);
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
