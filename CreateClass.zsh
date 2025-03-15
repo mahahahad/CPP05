@@ -8,21 +8,29 @@ for file in "$@"; do
     echo "#ifndef ${file:u}_HPP
 #define ${file:u}_HPP
 
+#include <iostream>
+
 class   $file {
     /* PUBLIC */
     // Requirements (Orthodox Canonical Form)
     public:
-        $file();
+        $file( void );
         $file( const $file& copy );
         $file&  operator=( const $file& copy );
-        ~$file();
+        ~$file( void );
     
     // Member functions
     public:
         // Members go here
 
+    /* PRIVATE */
+    // Member functions
     private:
-        // Private attributes and functions go here
+        // Functions
+
+    // Attributes
+    private:
+        // Attributes
 };
 
 #endif" > $file.hpp
