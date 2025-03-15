@@ -25,7 +25,6 @@ class   AForm {
         int                 getExecGrade( void ) const;
         void                beSigned( const Bureaucrat& bc );
         void                execute( Bureaucrat const & executor ) const;
-        virtual void        executeForm( void ) const = 0;
 
     public:
         class   GradeTooLowException: public std::exception {
@@ -40,6 +39,9 @@ class   AForm {
             public:
                 virtual const char *what() const throw();
         };
+
+    protected:
+        virtual void        executeForm( void ) const = 0;
 
     private:
         const std::string   name;
