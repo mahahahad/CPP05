@@ -69,5 +69,9 @@ AForm   *Intern::makeForm(
     }
     if (!form)
         throw InvalidFormNameException();
+    else
+        std::cout << "Intern" GREEN " created " RESET BOLD ITALIC
+            << form->getName() << RESET GREEN " successfully" RESET
+            << std::endl;
     return (form);
 }
