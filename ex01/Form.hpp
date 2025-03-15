@@ -1,9 +1,8 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include <string>
 #include <exception>
-
+#include <string>
 #include "Bureaucrat.hpp"
 
 class   Bureaucrat;
@@ -12,9 +11,8 @@ class   Form {
     public:
         Form(
             const std::string& name,
-            bool isSigned,
-            const int signReqGrade,
-            const int execReqGrade
+            const int signGrade,
+            const int execGrade
         );
         Form( const Form& copy );
         Form&   operator=( const Form& copy );
@@ -23,8 +21,8 @@ class   Form {
     public:
         std::string         getName( void ) const;
         bool                getIsSigned( void ) const;
-        int                 getSignReqGrade( void ) const;
-        int                 getExecReqGrade( void ) const;
+        int                 getSignGrade( void ) const;
+        int                 getExecGrade( void ) const;
         void                beSigned( const Bureaucrat& bc );
 
     public:
@@ -40,12 +38,10 @@ class   Form {
     private:
         const std::string   name;
         bool                isSigned;
-        // Required grade for signing the form
-        const int           signReqGrade;
-        // Required grade for executing the form
-        const int           execReqGrade;
+        const int           signGrade;
+        const int           execGrade;
 };
 
-std::ostream&   operator<<(std::ostream& output, const Form& form);
+std::ostream&   operator<<( std::ostream& output, const Form& form );
 
 #endif

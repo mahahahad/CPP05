@@ -2,46 +2,48 @@
 
 Form::Form(
     const std::string& name,
-    bool isSigned,
-    const int signReqGrade,
-    const int execReqGrade
+    const int signGrade,
+    const int execGrade
 ):
     name(name),
-    isSigned(isSigned),
-    signReqGrade(signReqGrade),
-    execReqGrade(execReqGrade)
+    isSigned(false),
+    signGrade(signGrade),
+    execGrade(execGrade)
 {
-    if (signReqGrade > 150 || execReqGrade > 150) {
+    if (signGrade > 150 || execGrade > 150) {
         throw GradeTooLowException();
-    } else if (signReqGrade < 1 || execReqGrade < 1) {
+    } else if (signGrade < 1 || execGrade < 1) {
         throw GradeTooHighException();
     }
-    std::cout << "Form " << name << " was constructed" << std::endl;
+    std::cout << "Form " BOLD ITALIC << name
+        << RESET " was constructed" << std::endl;
 };
 
 Form::Form(const Form& copy):
     name(copy.name),
     isSigned(copy.isSigned),
-    signReqGrade(copy.signReqGrade),
-    execReqGrade(copy.execReqGrade)
+    signGrade(copy.signGrade),
+    execGrade(copy.execGrade)
 {
-    if (signReqGrade > 150 || execReqGrade > 150) {
+    if (signGrade > 150 || execGrade > 150) {
         throw GradeTooLowException();
-    } else if (signReqGrade < 1 || execReqGrade < 1) {
+    } else if (signGrade < 1 || execGrade < 1) {
         throw GradeTooHighException();
     }
-    std::cout << "Form " << name << " was copied" << std::endl;
+    std::cout << "Form " BOLD ITALIC << name
+        << RESET " was copied" << std::endl;
 }
 
 Form& Form::operator=(const Form& copy) {
     isSigned = copy.isSigned;
-    std::cout << "Form " << name << " was copied (assignment operator)" 
-        << std::endl;
+    std::cout << "Form " BOLD ITALIC << name
+        << RESET " was copied (assignment operator)" << std::endl;
     return (*this);
 }
 
 Form::~Form() {
-    std::cout << "Form " << name << " was destructed" << std::endl;
+    std::cout << "Form " BOLD ITALIC << name
+        << RESET " was destructed" << std::endl;
 }
 
 std::string Form::getName(void) const {
@@ -52,40 +54,43 @@ bool    Form::getIsSigned(void) const {
     return (isSigned);
 }
 
-int Form::getSignReqGrade(void) const {
-    return (signReqGrade);
+int Form::getSignGrade(void) const {
+    return (signGrade);
 }
 
-int Form::getExecReqGrade(void) const {
-    return (execReqGrade);
+int Form::getExecGrade(void) const {
+    return (execGrade);
 }
 
 void    Form::beSigned(const Bureaucrat& bc) {
-    if (bc.getGrade() <= signReqGrade) {
+    if (bc.getGrade() <= signGrade) {
         isSigned = true;
-        std::cout << "Bureaucrat " << bc.getName() << " signed " << name
-            << " form" << std::endl;
+        std::cout << "Bureaucrat " BOLD ITALIC << bc.getName()
+            << RESET GREEN " signed " RESET BOLD ITALIC << name
+            << RESET GREEN " successfully" RESET << std::endl;
     } else {
-        std::cout << "Bureaucrat " << bc.getName() << " couldn't sign " << name
-            << " because their grade was too low." << std::endl;
-        // throw Form::GradeTooLowException();
+        std::cout << "Bureaucrat " BOLD ITALIC << bc.getName()
+            << RESET RED " couldn't sign " RESET BOLD ITALIC << name
+            << RESET YELLOW " because their grade was too low." RESET
+            << std::endl;
+        throw Form::GradeTooLowException();
     }
 }
 
 const char* Form::GradeTooLowException::what() {
-    return (RED "ERROR:" RESET "The provided grade is too low\n");
+    return (BOLD RED "ERROR: " RESET "The provided grade is too low\n");
 }
 
 const char* Form::GradeTooHighException::what() {
-    return (RED "ERROR:" RESET "The provided grade is too high\n");
+    return (BOLD RED "ERROR: " RESET "The provided grade is too high\n");
 }
 
 // Stream insertion overload
 std::ostream&   operator<<(std::ostream& output, const Form& form) {
-    output << form.getName() << ": "
-        << (form.getIsSigned() ? "Signed": "Not Signed")
-        << ", Required grade to sign: " << form.getSignReqGrade()
-        << ", Required grade to execute: " << form.getExecReqGrade()
+    output << form.getName() << ":\n"
+        << (form.getIsSigned() ? "- Signed\n": "- Not Signed\n")
+        << "- Required grade to sign: " << form.getSignGrade() << "\n"
+        << "- Required grade to execute: " << form.getExecGrade()
         << std::endl;
     return (output);
 }

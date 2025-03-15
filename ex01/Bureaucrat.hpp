@@ -2,12 +2,16 @@
 #define BUREAUCRAT_HPP
 
 #define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
 #define RESET "\033[0m"
+#define BOLD "\033[1m"
+#define ITALIC "\033[3m"
 
-#include <iostream>
 #include <exception>
+#include <iostream>
 #include <string>
-
 #include "Form.hpp"
 
 class   Form;
@@ -44,6 +48,6 @@ class   Bureaucrat {
         Bureaucrat();
 };
 
-std::ostream&   operator<<(std::ostream& output, const Bureaucrat& bc);
+std::ostream&   operator<<( std::ostream& output, const Bureaucrat& bc );
 
 #endif

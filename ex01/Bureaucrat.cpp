@@ -8,7 +8,8 @@ Bureaucrat::Bureaucrat(const std::string& name, const int grade):
     } else if (grade < 1) {
         throw GradeTooHighException();
     }
-    std::cout << "Bureaucrat " << name << " was constructed" << std::endl;
+    std::cout << "Bureaucrat " BOLD ITALIC << name
+        << RESET " was constructed" << std::endl;
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy):
@@ -19,18 +20,20 @@ Bureaucrat::Bureaucrat(const Bureaucrat& copy):
     } else if (grade < 1) {
         throw GradeTooHighException();
     }
-    std::cout << "Bureaucrat " << name << " was copied" << std::endl;
+    std::cout << "Bureaucrat " BOLD ITALIC << name
+        << RESET " was copied" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy) {
     grade = copy.grade;
-    std::cout << "Bureaucrat " << name << " was copied (assignment operator)" 
-        << std::endl;
+    std::cout << "Bureaucrat " BOLD ITALIC << name
+        << RESET " was copied (assignment operator)" << std::endl;
     return (*this);
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat " << name << " was destructed" << std::endl;
+    std::cout << "Bureaucrat " BOLD ITALIC << name
+        << RESET " was destructed" << std::endl;
 }
 
 std::string Bureaucrat::getName(void) const {
