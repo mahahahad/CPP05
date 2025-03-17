@@ -19,7 +19,7 @@ int main(void) {
             std::cout << invalid;
             invalid.increaseGrade();
 
-        } catch (Bureaucrat::GradeTooHighException &e) {
+        } catch (std::exception &e) {
             std::cout << e.what();
         }
     }
@@ -30,7 +30,7 @@ int main(void) {
             invalid2.decreaseGrade();
             std::cout << invalid2;
             invalid2.decreaseGrade();
-        } catch (Bureaucrat::GradeTooLowException &e) {
+        } catch (std::exception &e) {
             std::cout << e.what();
         }
     }
