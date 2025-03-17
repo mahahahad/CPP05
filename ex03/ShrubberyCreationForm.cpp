@@ -6,7 +6,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target):
 {
     std::cout << BOLD ITALIC << getName() << " was created" RESET << std::endl;
 }
-    
+
 // Copy Constructor
 ShrubberyCreationForm::ShrubberyCreationForm(
     const ShrubberyCreationForm& copy
@@ -29,7 +29,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
         << RESET << std::endl;
 }
 
-void    ShrubberyCreationForm::executeForm(void) const {
+void    ShrubberyCreationForm::beExecuted(void) const {
     std::ofstream outputFile((_target + "_shrubbery").c_str());
 
     outputFile

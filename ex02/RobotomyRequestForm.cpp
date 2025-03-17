@@ -6,7 +6,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target):
 {
     std::cout << BOLD ITALIC << getName() << " was created" RESET << std::endl;
 }
-    
+
 // Copy Constructor
 RobotomyRequestForm::RobotomyRequestForm(
     const RobotomyRequestForm& copy
@@ -29,7 +29,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
         << RESET << std::endl;
 }
 
-void    RobotomyRequestForm::executeForm(void) const {
+void    RobotomyRequestForm::beExecuted(void) const {
     srand(time(0));
     std::cout << "* DRILLING NOISES *" << std::endl;
     std::cout << _target

@@ -32,7 +32,7 @@ class   AForm {
                 virtual const char  *what() const throw();
         };
         class   GradeTooHighException: public std::exception {
-            public: 
+            public:
                 virtual const char  *what() const throw();
         };
         class   FormNotSignedException: public std::exception {
@@ -41,14 +41,14 @@ class   AForm {
         };
 
     protected:
-        virtual void        executeForm( void ) const = 0;
+        virtual void        beExecuted( void ) const = 0;
 
     private:
         const std::string   name;
         bool                isSigned;
         const int           signGrade;
         const int           execGrade;
-    
+
     private:
         AForm();
 };

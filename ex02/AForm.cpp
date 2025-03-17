@@ -72,9 +72,9 @@ void    AForm::beSigned(const Bureaucrat& bc) {
             << std::endl;
         std::cerr << YELLOW "- (Provided grade: " << bc.getGrade()
             << ")" RESET << std::endl;
-        throw AForm::GradeTooLowException();
+        throw GradeTooLowException();
     }
-    
+
     // Set the sign status to true
     isSigned = true;
 
@@ -87,7 +87,7 @@ void    AForm::beSigned(const Bureaucrat& bc) {
 void    AForm::execute(const Bureaucrat & executor) const {
     if (!getIsSigned()) {
         std::cerr
-            << "The request" RED " could not be executed" RESET " because " 
+            << "The request" RED " could not be executed" RESET " because "
             << BOLD ITALIC << getName() << RESET " is"
             << RED " not signed." RESET << std::endl;
         throw FormNotSignedException();
@@ -104,8 +104,8 @@ void    AForm::execute(const Bureaucrat & executor) const {
         throw GradeTooLowException();
     }
 
-    // Call the executeForm method for each derived class
-    executeForm();
+    // Call the method specific to each derived class
+    beExecuted();
 
     // Display a message indicating successful execution
     std::cout << "Bureaucrat " BOLD ITALIC << executor.getName()

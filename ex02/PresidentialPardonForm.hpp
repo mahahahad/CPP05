@@ -16,7 +16,7 @@ class   PresidentialPardonForm: public AForm {
 
     // Member functions
     public:
-        void    executeForm( void ) const;
+        void    beExecuted( void ) const;
 
     /* PRIVATE */
     // Member functions

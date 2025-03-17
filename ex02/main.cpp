@@ -22,15 +22,15 @@ int main(void) {
             std::cout << e.what();
         }
     }
-    // {
-    //     try {
-    //         PresidentialPardonForm a("TestTarget");
-    //         Bureaucrat  bomboclaat("Bomboclaat", 5);
+    {
+        try {
+            PresidentialPardonForm a("TestTarget");
+            Bureaucrat  bomboclaat("Bomboclaat", 20);
 
-    //         bomboclaat.signForm(a);
-    //         bomboclaat.executeForm(a);
-    //     } catch (std::exception &e) {
-    //         std::cout << e.what();
-    //     }
-    // }
+            // bomboclaat.signForm(a);
+            bomboclaat.executeForm(a);
+        } catch (std::exception &e) {
+            std::cout << e.what();
+        }
+    }
 }

@@ -12,11 +12,11 @@ class   RobotomyRequestForm: public AForm {
         RobotomyRequestForm( const RobotomyRequestForm& copy );
         RobotomyRequestForm&  operator=( const RobotomyRequestForm& copy );
         ~RobotomyRequestForm();
-    
+
     // Member functions
     public:
-        void    executeForm( void ) const;
-    
+        void    beExecuted( void ) const;
+
     /* PRIVATE */
     // Member functions
     private:

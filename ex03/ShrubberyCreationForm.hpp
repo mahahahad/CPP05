@@ -12,10 +12,10 @@ class   ShrubberyCreationForm: public AForm {
         ShrubberyCreationForm( const ShrubberyCreationForm& copy );
         ShrubberyCreationForm&  operator=( const ShrubberyCreationForm& copy );
         ~ShrubberyCreationForm();
-    
+
     // Member functions
     public:
-        void    executeForm( void ) const;
+        void    beExecuted( void ) const;
 
     /* PRIVATE */
     // Member functions

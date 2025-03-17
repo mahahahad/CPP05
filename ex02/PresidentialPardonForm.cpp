@@ -6,7 +6,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string& target):
 {
     std::cout << BOLD ITALIC << getName() << " was created" RESET << std::endl;
 }
-    
+
 // Copy Constructor
 PresidentialPardonForm::PresidentialPardonForm(
     const PresidentialPardonForm
@@ -31,7 +31,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
         << RESET << std::endl;
 }
 
-void    PresidentialPardonForm::executeForm(void) const {
+void    PresidentialPardonForm::beExecuted(void) const {
     std::cout << _target << " has been pardoned by Zaphod Beeblebrox!"
         << std::endl;
 }
