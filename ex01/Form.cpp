@@ -63,18 +63,25 @@ int Form::getExecGrade(void) const {
 }
 
 void    Form::beSigned(const Bureaucrat& bc) {
-    if (bc.getGrade() <= signGrade) {
-        isSigned = true;
-        std::cout << "Bureaucrat " BOLD ITALIC << bc.getName()
-            << RESET GREEN " signed " RESET BOLD ITALIC << name
-            << RESET GREEN " successfully" RESET << std::endl;
-    } else {
-        std::cout << "Bureaucrat " BOLD ITALIC << bc.getName()
+    if (bc.getGrade() > signGrade) {
+        std::cerr << "Bureaucrat " BOLD ITALIC << bc.getName()
             << RESET RED " couldn't sign " RESET BOLD ITALIC << name
             << RESET YELLOW " because their grade was too low." RESET
             << std::endl;
-        throw Form::GradeTooLowException();
+        std::cerr << YELLOW "- (Required grade: " << getSignGrade() << ")" RESET
+            << std::endl;
+        std::cerr << YELLOW "- (Provided grade: " << bc.getGrade()
+            << ")" RESET << std::endl;
+        throw GradeTooLowException();
     }
+
+    // Set the sign status to true
+    isSigned = true;
+
+    // Display a message indicating the successful signing
+    std::cout << "Bureaucrat " BOLD ITALIC << bc.getName()
+        << RESET GREEN " signed " RESET BOLD ITALIC << name
+        << RESET GREEN " successfully" RESET << std::endl;
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
