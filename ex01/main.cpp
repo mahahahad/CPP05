@@ -15,7 +15,7 @@ int main(void) {
             std::cout << extremelyImportantForm;
             joe.signForm(extremelyImportantForm);
             std::cout << extremelyImportantForm;
-        } catch (Form::GradeTooLowException &e) {
+        } catch (std::exception &e) {
             std::cout << e.what();
         }
     }
